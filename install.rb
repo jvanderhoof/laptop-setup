@@ -54,8 +54,6 @@ def c_install(args)
   install "brew cask install #{args}"
 end
 
-=begin
-
 puts "install homebrew"
 `ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
 
@@ -90,5 +88,3 @@ install "curl -L http://install.ohmyz.sh | sh"
 
 install 'ssh-keygen -t rsa'
 puts "Paste this key into your github account: #{`cat ~/.ssh/id_rsa.pub`}"
-=end
-puts 'hi world'
