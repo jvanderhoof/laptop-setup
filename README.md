@@ -44,3 +44,4 @@ The following Applications will be installed:
 * vagrant (and install the berkshelf and omnibus plugins)
 * skype
 * spotify
+* chefdk

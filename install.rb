@@ -23,7 +23,8 @@ cask_libraries = [
   'virtualbox',
   'vagrant',
   'skype',
-  'spotify'
+  'spotify',
+  'chefdk'
 ]
 
 vagrant_plugins = [
