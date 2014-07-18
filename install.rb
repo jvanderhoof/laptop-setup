@@ -19,7 +19,6 @@ cask_libraries = [
   'google-chrome',
   'hipchat',
   'sequel-pro',
-  'alfred',
   'libreoffice',
   'virtualbox',
   'vagrant',
