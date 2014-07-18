@@ -1,4 +1,4 @@
-Gazelle Develoepr Laptop Setup
+Gazelle Developer Laptop Setup
 ==============================
 
 This is a script to install required and useful libraries onto a Gazelle Developer machine. It's been tested on a freshly wiped Maverick laptop.
