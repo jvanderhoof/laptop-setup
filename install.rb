@@ -8,8 +8,8 @@ brew_libraries = [
   'freeimage',
   'memcached',
   'redis',
-  'postgresql',
-  'sphinx --mysql'
+  'sphinx --mysql',
+  'packer'
 ]
 
 cask_libraries = [
@@ -24,12 +24,15 @@ cask_libraries = [
   'vagrant',
   'skype',
   'spotify',
-  'chefdk'
+  'chefdk',
+  'postgres',
+  'flux'
 ]
 
 vagrant_plugins = [
   'vagrant-berkshelf --plugin-version 2.0.1',
-  'vagrant-omnibus'
+  'vagrant-omnibus',
+  'vagrant-cachier'
 ]
 
 $stdout.sync = true
@@ -54,11 +57,13 @@ def c_install(args)
   install "brew cask install #{args}"
 end
 
+
 puts "install homebrew"
 `ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
 
 install 'brew doctor'
 install 'brew tap caskroom/cask'
+install 'brew tap homebrew/binary'
 
 b_install 'brew-cask'
 
