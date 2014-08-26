@@ -26,7 +26,8 @@ cask_libraries = [
   'spotify',
   'chefdk',
   'postgres',
-  'flux'
+  'flux',
+  'cyberduck'
 ]
 
 vagrant_plugins = [
