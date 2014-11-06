@@ -9,7 +9,8 @@ brew_libraries = [
   'memcached',
   'redis',
   'sphinx --mysql',
-  'packer'
+  'packer',
+  'postgres'
 ]
 
 cask_libraries = [
@@ -58,9 +59,9 @@ def c_install(args)
   install "brew cask install #{args}"
 end
 
-
+#=begin
 puts "install homebrew"
-`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+system("ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"")
 
 install 'brew doctor'
 install 'brew tap caskroom/cask'
@@ -70,9 +71,11 @@ b_install 'brew-cask'
 
 brew_libraries.each{|item| b_install(item)}
 
+install "mkdir -p ~/Library/LaunchAgents"
 %w{postgresql redis memcached mysql}.each do |app|
-  puts `ln -sfv /usr/local/opt/#{app}/*.plist ~/Library/LaunchAgents`
-  puts `launchctl load ~/Library/LaunchAgents/homebrew.mxcl.#{app}.plist`
+  install "ln -sfv /usr/local/opt/#{app}/*.plist ~/Library/LaunchAgents/"
+  install "launchctl load ~/Library/LaunchAgents/homebrew.mxcl.#{app}.plist"
+  install "createdb" if app == 'postgresql'
 end
 
 cask_libraries.each{|item| c_install(item) }
@@ -81,6 +84,8 @@ vagrant_plugins.each{|item| v_install(item) }
 
 puts 'install rvm & rubies'
 install '\curl -L https://get.rvm.io | bash -s stable --ruby'
+install "source ./.rvm/scripts/rvm"
+
 %w{ruby-1.9.3 ruby-1.8.7}.each do |ruby|
   install "rvm install #{ruby} --with-gcc=clang"
   unless ruby.match(/1\.8\.7/)
@@ -92,5 +97,5 @@ end
 
 install "curl -L http://install.ohmyz.sh | sh"
 
-install 'ssh-keygen -t rsa'
-puts "Paste this key into your github account: #{`cat ~/.ssh/id_rsa.pub`}"
+#install 'ssh-keygen -t rsa'
+#puts "Paste this key into your github account: #{`cat ~/.ssh/id_rsa.pub`}"
