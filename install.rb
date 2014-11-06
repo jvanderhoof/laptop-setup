@@ -60,7 +60,7 @@ end
 
 
 puts "install homebrew"
-`ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
+`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 
 install 'brew doctor'
 install 'brew tap caskroom/cask'
