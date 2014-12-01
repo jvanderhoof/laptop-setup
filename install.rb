@@ -28,11 +28,12 @@ cask_libraries = [
   'chefdk',
   'postgres',
   'flux',
-  'cyberduck'
+  'cyberduck',
+  'heroku-toolbelt'
 ]
 
 vagrant_plugins = [
-  'vagrant-berkshelf --plugin-version 2.0.1',
+  'vagrant-berkshelf',
   'vagrant-omnibus',
   'vagrant-cachier'
 ]
@@ -59,7 +60,7 @@ def c_install(args)
   install "brew cask install #{args}"
 end
 
-#=begin
+=begin
 puts "install homebrew"
 system("ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"")
 
@@ -77,9 +78,9 @@ install "mkdir -p ~/Library/LaunchAgents"
   install "launchctl load ~/Library/LaunchAgents/homebrew.mxcl.#{app}.plist"
   install "createdb" if app == 'postgresql'
 end
-
+=end
 cask_libraries.each{|item| c_install(item) }
-
+=begin
 vagrant_plugins.each{|item| v_install(item) }
 
 puts 'install rvm & rubies'
@@ -99,3 +100,4 @@ install "curl -L http://install.ohmyz.sh | sh"
 
 #install 'ssh-keygen -t rsa'
 #puts "Paste this key into your github account: #{`cat ~/.ssh/id_rsa.pub`}"
+=end
