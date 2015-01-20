@@ -29,7 +29,8 @@ cask_libraries = [
   'postgres',
   'flux',
   'cyberduck',
-  'heroku-toolbelt'
+  'heroku-toolbelt',
+  'psequel'
 ]
 
 vagrant_plugins = [
