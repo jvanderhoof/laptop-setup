@@ -62,7 +62,7 @@ end
 def c_install(args)
   install "brew cask install #{args}"
 end
-=begin
+
 puts "install homebrew"
 system("ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"")
 
@@ -88,7 +88,6 @@ vagrant_plugins.each{|item| v_install(item) }
 puts 'install rvm & rubies'
 install '\curl -L https://get.rvm.io | bash -s stable --ruby'
 
-=end
 system "source ./.rvm/scripts/rvm"
 
 %w{ 1.9.3 1.8.7 2.2 }.each do |ruby_version|
