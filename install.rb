@@ -10,7 +10,8 @@ brew_libraries = [
   'redis',
   'sphinx --mysql',
   'packer',
-  'postgres'
+  'postgres',
+  'fig'
 ]
 
 cask_libraries = [
@@ -30,7 +31,8 @@ cask_libraries = [
   'flux',
   'cyberduck',
   'heroku-toolbelt',
-  'psequel'
+  'psequel',
+  'boot2docker'
 ]
 
 vagrant_plugins = [
@@ -85,9 +87,10 @@ vagrant_plugins.each{|item| v_install(item) }
 
 puts 'install rvm & rubies'
 install '\curl -L https://get.rvm.io | bash -s stable --ruby'
-install "source ./.rvm/scripts/rvm"
 
-%w{ruby-1.9.3 ruby-1.8.7}.each do |ruby|
+system "source ./.rvm/scripts/rvm"
+
+%w{ruby-1.9.3 ruby-1.8.7 ruby-2.2}.each do |ruby|
   install "rvm install #{ruby} --with-gcc=clang"
   unless ruby.match(/1\.8\.7/)
     install "rvm #{ruby} do gem update --system"
